@@ -1,0 +1,32 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name: real-estate
+    database_user: root
+    database_password: ~
+    # You should uncomment this if you want use pdo_sqlite
+    # database_path: "%kernel.root_dir%/data.db3"
+
+    mailer_transport: mail
+    mailer_host: 127.0.0.1
+    mailer_user:
+    mailer_password:
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    fixtures_object_balcony: '%kernel.root_dir%/config/fixtures/object/balcony.yml'
+    fixtures_object_heating: '%kernel.root_dir%/config/fixtures/object/heating.yml'
+    fixtures_object_state: '%kernel.root_dir%/config/fixtures/object/state.yml'
+    fixtures_object_type: '%kernel.root_dir%/config/fixtures/object/type.yml'
+    fixtures_object_wall: '%kernel.root_dir%/config/fixtures/object/wall.yml'
+    fixtures_object_water_supply: '%kernel.root_dir%/config/fixtures/object/water_supply.yml'
+    fixtures_object_wc: '%kernel.root_dir%/config/fixtures/object/wc.yml'
+
+    fixtures_address_city: '%kernel.root_dir%/config/fixtures/address/city.yml'
+
+    fixtures_advert_type: '%kernel.root_dir%/config/fixtures/advert/type.yml'
+    fixtures_advert_category: '%kernel.root_dir%/config/fixtures/advert/category.yml'

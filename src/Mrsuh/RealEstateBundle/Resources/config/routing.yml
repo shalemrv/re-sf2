@@ -1,0 +1,67 @@
+#security
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
+
+login:
+    path: /login
+    defaults: { _controller: MrsuhRealEstateBundle:Security:login }
+
+#redirect
+redirect:
+    path: /
+    defaults: { _controller: MrsuhRealEstateBundle:Default:redirect }
+
+# profile
+profile:
+    path: /profile
+    defaults: { _controller: MrsuhRealEstateBundle:User:profile }
+
+#clients
+client:
+    path: /client/{id}
+    defaults: { _controller: MrsuhRealEstateBundle:Client:getClientById, id: id }
+
+create_client:
+    path: /create-client
+    defaults: { _controller: MrsuhRealEstateBundle:Client:createClient }
+
+find_client:
+    path: /find-client
+    defaults: { _controller: MrsuhRealEstateBundle:Client:findClient }
+
+#Advert
+advert:
+    path: /advert/{id}
+    defaults: { _controller: MrsuhRealEstateBundle:Advert:getAdvertById, id: id }
+
+find_advert:
+    path: /find-advert
+    defaults: { _controller: MrsuhRealEstateBundle:Advert:findAdvert }
+
+find_advert_by_client:
+    path: /find-advert-by-client/{clientId}
+    defaults: { _controller: MrsuhRealEstateBundle:Advert:findAdvertByClient, clientId: clientId }
+
+create_advert:
+    path: /create-advert
+    defaults: { _controller: MrsuhRealEstateBundle:Advert:createAdvert }
+
+change_user_advert_list:
+    path: /change-user-advert-list
+    defaults: { _controller: MrsuhRealEstateBundle:Advert:changeUserAdvertList }
+
+#Users
+user:
+    path: /user/{id}
+    defaults: { _controller: MrsuhRealEstateBundle:User:user, id: id }
+
+list_user:
+    path: /users
+    defaults: { _controller: MrsuhRealEstateBundle:User:getListUser }
+
+create_user:
+    path: /create-user
+    defaults: { _controller: MrsuhRealEstateBundle:User:createUser }

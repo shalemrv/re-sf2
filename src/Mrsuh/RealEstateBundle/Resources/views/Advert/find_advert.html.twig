@@ -1,0 +1,290 @@
+{% extends "MrsuhRealEstateBundle::layout.html.twig" %}
+{% block content %}
+
+    {{ form_start(form) }}
+
+    <div class="regular_search">
+        <div class="row">
+            <div class="col-md-2">{{ form_widget(form.search_string_type, {'attr': {'class': 'form-control' }}) }}</div>
+            <div class="col-md-4">{{ form_widget(form.search_string_string, {'attr': {'class': 'form-control' }}) }}</div>
+            <div class="col-md-2"><button type="button" class="btn btn-success btn-width" id="submit_button">Поиск</button></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2">{{ form_widget(form.advert_type, {'attr': {'class': 'form-control' }}) }}</div>
+            <div class="col-md-2">{{ form_widget(form.advert_user, {'attr': {'class': 'form-control' }}) }}</div>
+            <div class="col-md-2">{{ form_widget(form.advert_status, {'attr': {'class': 'form-control' }}) }}</div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6"><a href="##" id="extension_button">Расширенный поиск</a></div>
+    </div>
+
+    <div id="extension_search" hidden="true">
+        <br>
+        <div class="row">
+            <div class="col-md-3">
+
+                <div class="row">
+                    <div class="col-md-12"><label>Тип объекта</label></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {% for form in form.object_type %}
+                            {{ form_widget(form) }}
+                            {{ form_label(form) }}<br>
+                        {% endfor %}
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-12"><label>Состояние объекта</label></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {% for form in form.object_state %}
+                            {{ form_widget(form) }}
+                            {{ form_label(form) }}<br>
+                        {% endfor %}
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-12"><label>Материал стен дома</label></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {% for form in form.object_wall %}
+                            {{ form_widget(form) }}
+                            {{ form_label(form) }}<br>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4"><label>Цена</label></div>
+                    <div class="col-md-4">{{ form_widget(form.price_from, {'attr': {'class': 'form-control' }}) }}</div>
+                    <div class="col-md-4">{{ form_widget(form.price_to, {'attr': {'class': 'form-control' }}) }}</div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-4"><label>Стоимость квадратного метра</label></div>
+                    <div class="col-md-4">{{ form_widget(form.meter_price_from, {'attr': {'class': 'form-control date' }}) }}
+                    </div>
+                    <div class="col-md-4">{{ form_widget(form.meter_price_to, {'attr': {'class': 'form-control date' }})}}
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-4"><label>Число комнат</label></div>
+                    <div class="col-md-4">{{ form_widget(form.room_from, {'attr': {'class': 'form-control date' }}) }}
+                    </div>
+                    <div class="col-md-4">{{ form_widget(form.room_to, {'attr': {'class': 'form-control date' }}) }}
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-4"><label>Общая площадь</label></div>
+                    <div class="col-md-4">{{ form_widget(form.common_area_from, {'attr': {'class': 'form-control date' }}) }}
+                    </div>
+                    <div class="col-md-4">{{ form_widget(form.common_area_to, {'attr': {'class': 'form-control date' }})}}
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-4"><label>Жилая площадь</label></div>
+                    <div class="col-md-4">{{ form_widget(form.live_area_from, {'attr': {'class': 'form-control date' }})}}
+                    </div>
+                    <div class="col-md-4">{{ form_widget(form.live_area_to, {'attr': {'class': 'form-control date' }})}}
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-4"><label>Площадть кухни</label></div>
+                    <div class="col-md-4">{{ form_widget(form.kitchen_area_from, {'attr': {'class': 'form-control date' }}) }}
+                    </div>
+                    <div class="col-md-4">{{ form_widget(form.kitchen_area_to, {'attr': {'class': 'form-control date' }})}}
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-4"><label>Земельный участок</label></div>
+                    <div class="col-md-4">{{ form_widget(form.section_area_from, {'attr': {'class': 'form-control' }}) }}
+                    </div>
+                    <div class="col-md-4">{{ form_widget(form.section_area_to, {'attr': {'class': 'form-control' }})}}
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-4"><label>Этаж</label></div>
+                    <div class="col-md-4">{{ form_widget(form.floor_from, {'attr': {'class': 'form-control date' }})}}
+                    </div>
+                    <div class="col-md-4">{{ form_widget(form.floor_to, {'attr': {'class': 'form-control date' }}) }}
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-4"><label>Количество этажей</label></div>
+                    <div class="col-md-4">{{ form_widget(form.floors_from, {'attr': {'class': 'form-control date' }})}}
+                    </div>
+                    <div class="col-md-4">{{ form_widget(form.floors_to, {'attr': {'class': 'form-control date' }}) }}
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-4"><label>Год постройки</label></div>
+                    <div class="col-md-4">{{ form_widget(form.build_year_from, {'attr': {'class': 'form-control date' }})}}
+                    </div>
+                    <div class="col-md-4">{{ form_widget(form.build_year_to, {'attr': {'class': 'form-control date' }})}}
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-1">{{ form_widget(form.not_first_floor) }}</div>
+                    <div class="col-md-5"><label>Не первый этаж</label></div>
+                    <div class="col-md-1">{{ form_widget(form.not_last_floor) }}</div>
+                    <div class="col-md-5"><label>Не последний этаж</label></div>
+                </div>
+                <br>
+            </div>
+
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-8">{{ form_widget(form.object_city, {'attr': {'class': 'form-control' }}) }}
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-8"><label>Регион города</label></div>
+                    <div id="findAdvert_object_region_city"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        {% for id,city in regionsCity %}
+                            <div class="region_city" id="region_city_{{ id }}" style="display: none;">
+                                {% for key,name in city %}
+                                    <input type="checkbox" id="findAdvert_object_region_city_{{ key }}" name="findAdvert[object_region_city][{{ key }}]"  value={{ key }}{% if key in regions | keys %} checked {% endif %}> <label for="findAdvert_object_region_city_{{ key }}" >{{ name }}</label><br>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <br>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        {% if pagination and pagination.items is not empty %}
+            <div class="col-md-8"><b>Всего результатов:</b> {{ pagination.items | length }}</div>
+            <div class="col-md-2"><b class="pull-right">Показывать на странице:</b></div>
+            <div class="col-md-2">{{ form_widget(form.pagination_items_on_page, {'attr': {'class': 'form-control' }}) }}</div>
+        {% else %}
+            <div class="col-md-1">{{ form_widget(form.pagination_items_on_page, {'attr': {'class': 'form-control', 'style':'display: none' }}) }}</div>
+        {% endif %}
+    </div>
+    <br>
+
+    {{ form_widget(form.search, {'attr': {'hidden': 'true' }} ) }}
+
+    {% do form.object_region_city.setRendered %}
+    {{ form_end(form) }}
+
+    {% include "MrsuhRealEstateBundle::Advert/list.html.twig" %}
+    {% include "MrsuhRealEstateBundle::Default/pagination.html.twig" %}
+
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(function () {
+            var submit_button = $('#submit_button');
+
+            var extension_button = $('#extension_button');
+            var extension_search = $('#extension_search');
+            extension_button.click(function () {
+                if (extension_search.is(':hidden')) {
+                    extension_search.show('slow')
+                } else {
+                    extension_search.hide('slow')
+                }
+            });
+
+            var region_city = $('#findAdvert_object_region_city');
+            var select_city = $('#findAdvert_object_city');
+            select_city.change(function(){
+                set_region_city();
+            });
+
+            var set_region_city = function()
+            {
+                $('.region_city').hide();
+                $('#region_city_' + select_city.val()).show();
+            };
+
+            set_region_city();
+
+            submit_button.click(function(){
+                submit();
+            });
+
+            var submit = function(){
+                region_city.clone($('.region_city:visible input'));
+                $('[name="findAdvert"]').submit();
+            };
+
+            order('findAdvert', [
+                'id',
+                'city',
+                'region',
+                'price',
+                'create_time',
+                'update_time',
+                'expire_time',
+                'status'
+            ], submit);
+
+            var current_page = 1;
+            var max_page = 1;
+            {% if pagination %}
+            current_page = {{ pagination.pagination.current_page }};
+            max_page = {{ pagination.pagination.total_pages }};
+            {% endif %}
+
+            pagination('findAdvert', current_page, max_page, submit);
+
+            $('#findAdvert_price_from').on('keyup', function(){
+                myPriceFormat($(this));
+            });
+            $('#findAdvert_price_to').on('keyup', function(){
+                myPriceFormat($(this));
+            });
+            $('#findAdvert_meter_price_from').on('keyup', function(){
+                myPriceFormat($(this));
+            });
+            $('#findAdvert_meter_price_to').on('keyup', function(){
+                myPriceFormat($(this));
+            });
+
+        });
+    </script>
+
+{% endblock %}

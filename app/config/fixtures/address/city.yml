@@ -1,0 +1,59 @@
+1:
+    name: Rostov-on-Don
+    region:
+        - Alexandrovka
+        - Airport
+        - Bolgarstroy
+        - Military Science
+        - Railway (ZhDR)
+        - Western (ZZhM)
+        - Zoo
+        - Kamenka
+        - Leventsovka
+        - Left Coast
+        - Landvorets
+        - Lenin
+        - Nakhivecan
+        - New settlement
+        - Ordzhonikidze
+        - Suburb
+        - Rostov Sea
+        - Northern (SJM)
+        - Selmash
+        - Stroygorodok
+        - Suvorovsky
+        - Temernik
+        - Center
+        - Chkalovsky
+2:
+    name: Bataysk
+    region:
+        - 9th school
+        - Air town
+        - Birch Grove
+        - Eastern
+        - Gaidar
+        - Zalesye
+        - Western
+        - Brick
+        - Red Garden
+        - Bulk
+        - Vegetable
+        - RDVS
+        - Northern
+        - Salt Lake
+        - Temple
+        - Center
+        - Southern
+3:
+    name: Aksai
+    region:
+        - Aksai
+4:
+    name: Azov
+    region:
+        - Azov
+5:
+    name: Region
+    region:
+        - Region

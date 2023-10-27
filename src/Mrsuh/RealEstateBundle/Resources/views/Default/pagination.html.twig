@@ -1,0 +1,19 @@
+{% if pagination and pagination.items is not empty  and pagination.pagination.total_pages > 1 %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <nav>
+                <ul class="pagination">
+                    {% for page in  pagination.pagination.pages %}
+                        <li {% if page.index == pagination.pagination.current_page %}class="active"{% endif %}><a href="##" data-page="{{ page.index }}">{{ page.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+{% elseif pagination and pagination.items is empty %}
+
+    <b>Запрос не дал результатов...</b>
+
+{% endif %}

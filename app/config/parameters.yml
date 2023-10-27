@@ -1,0 +1,22 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: 3306
+    database_name: real-estate
+    database_user: shalemv
+    database_password: Raj@1995
+    mailer_transport: mail
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: ThisTokenIsNotSoSecretChangeIt
+    fixtures_object_balcony: '%kernel.root_dir%/config/fixtures/object/balcony.yml'
+    fixtures_object_heating: '%kernel.root_dir%/config/fixtures/object/heating.yml'
+    fixtures_object_state: '%kernel.root_dir%/config/fixtures/object/state.yml'
+    fixtures_object_type: '%kernel.root_dir%/config/fixtures/object/type.yml'
+    fixtures_object_wall: '%kernel.root_dir%/config/fixtures/object/wall.yml'
+    fixtures_object_water_supply: '%kernel.root_dir%/config/fixtures/object/water_supply.yml'
+    fixtures_object_wc: '%kernel.root_dir%/config/fixtures/object/wc.yml'
+    fixtures_address_city: '%kernel.root_dir%/config/fixtures/address/city.yml'
+    fixtures_advert_type: '%kernel.root_dir%/config/fixtures/advert/type.yml'
+    fixtures_advert_category: '%kernel.root_dir%/config/fixtures/advert/category.yml'

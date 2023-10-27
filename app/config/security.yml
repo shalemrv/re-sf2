@@ -1,0 +1,57 @@
+security:
+    encoders:
+        Mrsuh\RealEstateBundle\Entity\User:
+            algorithm: sha512
+            encode-as-base64: true
+            iterations: 10
+
+    role_hierarchy:
+        ROLE_USER:       ROLE_USER
+        ROLE_ADMIN:      ROLE_ADMIN
+
+    providers:
+        main:
+            entity:
+                class: Mrsuh\RealEstateBundle\Entity\User
+                property: username
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        login:
+            pattern:  ^/login$
+            anonymous: ~
+
+        secured_area:
+            pattern:  ^/
+            form_login:
+                check_path: login_check
+                login_path: login
+                always_use_default_target_path: true
+                default_target_path: find_advert
+            logout:
+                path: logout
+                target: login
+
+            security: true
+
+    access_control:
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        - { path: ^/profile$, roles: [ROLE_USER, ROLE_ADMIN] }
+
+        - { path: ^/find-advert$, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/create-advert$, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/advert, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/find-advert-by-client$, roles: [ROLE_USER, ROLE_ADMIN] }
+
+        - { path: ^/find-client$, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/create-client$, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/client$, roles: [ROLE_USER, ROLE_ADMIN] }
+
+        - { path: ^/users$, roles: [ROLE_ADMIN] }
+        - { path: ^/create-user$, roles: [ROLE_ADMIN] }
+        - { path: ^/change-user-advert-list$, roles: [ROLE_ADMIN] }
+

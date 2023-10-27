@@ -1,0 +1,38 @@
+services:
+    wsse.security.authentication.provider:
+        class: Mrsuh\RealEstateBundle\Security\Authentication\Provider\WsseProvider
+        arguments:
+            - "" # User Provider
+            - "%kernel.cache_dir%/security/nonces"
+        public: false
+
+    wsse.security.authentication.listener:
+        class: Mrsuh\RealEstateBundle\Security\Firewall\WsseListener
+        arguments: ["@security.context", "@security.authentication.manager"]
+        public: false
+
+
+    model.profile:
+        class: Mrsuh\RealEstateBundle\Model\ProfileModel
+        arguments: [@doctrine.orm.entity_manager]
+
+    model.client:
+        class: Mrsuh\RealEstateBundle\Model\ClientModel
+        arguments: [@doctrine.orm.entity_manager]
+
+    model.user:
+        class: Mrsuh\RealEstateBundle\Model\UserModel
+        arguments: [@doctrine.orm.entity_manager, @model.mail]
+
+    model.advert:
+        class: Mrsuh\RealEstateBundle\Model\AdvertModel
+        arguments: [@doctrine.orm.entity_manager]
+
+    model.mail:
+        class: Mrsuh\RealEstateBundle\Model\MailModel
+        arguments: [@mailer, %mailer_user%]
+
+    model.security:
+        class: Mrsuh\RealEstateBundle\Model\SecurityModel
+        arguments: [@model.user, @model.mail, %database_name%, %kernel.root_dir%]
+

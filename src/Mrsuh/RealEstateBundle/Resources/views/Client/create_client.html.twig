@@ -1,0 +1,206 @@
+{% extends "MrsuhRealEstateBundle::layout.html.twig" %}
+{% block content %}
+
+    {{ form_start(form) }}
+
+    <div class="row">
+        <div class="col-md-2"><label>Статус клиента</label></div>
+        <div class="col-md-4">{{ form_widget(form.status, {'attr': {'class': 'form-control' }}) }}</div>
+    </div>
+    <br>
+    <a href="##"><b>Данные клиента</b></a>
+    <hr>
+    <div class="row">
+        <div class="col-md-2"><label>ФИО 1*</label></div>
+        <div class="col-md-4">{{ form_widget(form.name1, {'attr': {'class': 'form-control' }}) }}</div>
+        <div class="col-md-2"><label>Номер телефона 1*</label></div>
+        <div class="col-md-4">{{ form_widget(form.phone1, {'attr': {'class': 'form-control' }}) }}</div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-2"><label>ФИО 2</label></div>
+        <div class="col-md-4">{{ form_widget(form.name2, {'attr': {'class': 'form-control' }}) }}</div>
+        <div class="col-md-2"><label>Номер телефона 2</label></div>
+        <div class="col-md-4">{{ form_widget(form.phone2, {'attr': {'class': 'form-control' }}) }}</div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-2"><label>ФИО 3</label></div>
+        <div class="col-md-4">{{ form_widget(form.name3, {'attr': {'class': 'form-control' }}) }}</div>
+        <div class="col-md-2"><label>Номер телефона 3</label></div>
+        <div class="col-md-4">{{ form_widget(form.phone3, {'attr': {'class': 'form-control' }}) }}</div>
+    </div>
+    <br>
+    <a href="##"><b>Характеристики</b></a>
+    <hr>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-6"><label>Тип недвижимости</label></div>
+                <div class="col-md-6">{{ form_widget(form.object_type, {'attr': {'class': 'form-control' }}) }}</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6"><label>Ипотека</label></div>
+                <div class="col-md-6">{{ form_widget(form.mortgage, {'attr': {'class': 'form-control' }}) }}</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6"><label>Дата рождения клиента</label></div>
+                <div class="col-md-6">{{ form_widget(form.birth_day, {'attr': {'class': 'form-control', 'readonly': 'readonly' }}) }}</div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6"><label>Горячий клиент</label></div>
+                <div class="col-md-6">{{ form_widget(form.hot, {'attr': {'class': 'form-control' }}) }}</div>
+            </div>
+            <br>
+        </div>
+
+
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-4"><label>Город</label></div>
+                <div class="col-md-8">{{ form_widget(form.city, {'attr': {'class': 'form-control' }}) }}</div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-12"><label>Район города</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="createClient_region_city" style="display: none;"></div>
+                    {% for id,city in regionsCity %}
+                        <div class="region_city" id="region_city_{{ id }}" style="display: none;">
+                            {% for key,name in city %}
+                                <input type="checkbox" id="createClient_region_city_{{ key }}" name="createClient[region_city][{{ key }}]"  value={{ key }}> <label for="createClient_region_city_{{ key }}" >{{ name }}</label><br>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-5">
+            <div class="row">
+                <div class="col-md-4"><label>Цена</label></div>
+                <div class="col-md-4">{{ form_widget(form.price_from, {'attr': {'class': 'form-control' }}) }}</div>
+                <div class="col-md-4">{{ form_widget(form.price_to, {'attr': {'class': 'form-control' }}) }}</div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-4"><label>Количество комнат</label></div>
+                <div class="col-md-4">{{ form_widget(form.room_from, {'attr': {'class': 'form-control' }}) }}</div>
+                <div class="col-md-4">{{ form_widget(form.room_to, {'attr': {'class': 'form-control' }}) }}</div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-4"><label>Общая площадь</label></div>
+                <div class="col-md-4">{{ form_widget(form.common_area_from, {'attr': {'class': 'form-control' }}) }}
+                </div>
+                <div class="col-md-4">{{ form_widget(form.common_area_to, {'attr': {'class': 'form-control' }}) }}</div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-4"><label>Жилая площадь</label></div>
+                <div class="col-md-4">{{ form_widget(form.live_area_from, {'attr': {'class': 'form-control' }}) }}</div>
+                <div class="col-md-4">{{ form_widget(form.live_area_to, {'attr': {'class': 'form-control' }}) }}</div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-4"><label>Площадь кухни</label></div>
+                <div class="col-md-4">{{ form_widget(form.kitchen_area_from, {'attr': {'class': 'form-control' }}) }}
+                </div>
+                <div class="col-md-4">{{ form_widget(form.kitchen_area_to, {'attr': {'class': 'form-control' }}) }}
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-4"><label>Земельный участок</label></div>
+                <div class="col-md-4">{{ form_widget(form.section_area_from, {'attr': {'class': 'form-control' }}) }}
+                </div>
+                <div class="col-md-4">{{ form_widget(form.section_area_to, {'attr': {'class': 'form-control' }}) }}
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-4"><label>Этаж</label></div>
+                <div class="col-md-4">{{ form_widget(form.floor_from, {'attr': {'class': 'form-control' }}) }}</div>
+                <div class="col-md-4">{{ form_widget(form.floor_to, {'attr': {'class': 'form-control' }}) }}</div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-4"><label>Этажность дома</label></div>
+                <div class="col-md-4">{{ form_widget(form.floors_from, {'attr': {'class': 'form-control' }}) }}</div>
+                <div class="col-md-4">{{ form_widget(form.floors_to, {'attr': {'class': 'form-control' }}) }}</div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr>
+    <div class="row">
+        <div class="col-md-4"><label>Комментарии</label></div>
+        <div class="col-md-8">{{ form_widget(form.comment, {'attr': {'class': 'form-control' }}) }}</div>
+    </div>
+    <hr>
+    <br>
+    <button type="button" class="btn btn-success btn-width" id="submit_create_client">Создать</button>
+
+    {% do form.region_city.setRendered  %}
+    {{ form_widget(form.submit, {'attr': {'hidden': 'true' }} ) }}
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(function(){
+            var birth_date = $('#createClient_birth_day');
+            birth_date.datepicker({ dateFormat: 'dd.mm.yy' });
+
+            var region_city = $('#createClient_region_city');
+
+            var select_city = $('#createClient_city');
+            select_city.change(function(){
+                set_region_city();
+            });
+
+            var submit = $('#createClient_submit');
+            var submit_button = $('#submit_create_client');
+
+            var set_region_city = function()
+            {
+                $('.region_city').hide();
+                $('#region_city_' + select_city.val()).show();
+            };
+
+            set_region_city();
+
+            submit_button.click(function(){
+                region_city.html($('.region_city:visible input'));
+                submit.click();
+            });
+
+            $('#createClient_price_from').on('keyup', function(){
+                myPriceFormat($(this));
+            });
+
+            $('#createClient_price_to').on('keyup', function(){
+                myPriceFormat($(this));
+            });
+        });
+    </script>
+{% endblock %}
